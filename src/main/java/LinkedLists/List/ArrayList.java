@@ -3,7 +3,7 @@ package LinkedLists.List;
 import Exceptions.ElementNotFoundException;
 import Exceptions.EmptyCollectionException;
 
-import Iterators.BasicArrayIterator;
+import Iterators.ArrayIterator;
 
 import java.util.Iterator;
 
@@ -84,13 +84,13 @@ public class ArrayList<T> implements ListADT<T> {
     }
 
     @Override
-    public boolean contains(final T target) {
+    public boolean contains(T targetElement) {
         if (this.isEmpty()) {
             return false;
         }
 
         for (int index = 0; index < this.numElements; index++) {
-            if (target.equals(this.elements[index])) {
+            if (targetElement.equals(this.elements[index])) {
                 return true;
             }
         }
@@ -110,7 +110,7 @@ public class ArrayList<T> implements ListADT<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new BasicArrayIterator<T>(this.elements);
+        return new ArrayIterator<T>(this.elements);
     }
 
     @Override

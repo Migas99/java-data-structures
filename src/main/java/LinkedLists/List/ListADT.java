@@ -17,7 +17,7 @@ public interface ListADT<T> extends Iterable<T> {
 
     T getLast() throws EmptyCollectionException;
 
-    boolean contains(final T p0);
+    boolean contains(T targetElement);
 
     boolean isEmpty();
 

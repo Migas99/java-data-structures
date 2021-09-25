@@ -2,12 +2,12 @@ package Iterators;
 
 import java.util.Iterator;
 
-public class BasicArrayIterator<T> implements Iterator<T> {
+public class ArrayIterator<T> implements Iterator<T> {
 
     private final T[] elements;
     private int current;
 
-    public BasicArrayIterator(T[] elements) {
+    public ArrayIterator(T[] elements) {
         this.elements = elements;
         this.current = 0;
     }

@@ -2,18 +2,19 @@ package LinkedLists.List;
 
 import Exceptions.ElementNotFoundException;
 import Exceptions.EmptyCollectionException;
-import Iterators.LinkedListIterator;
+import Iterators.DoubleLinkedListIterator;
+import Nodes.DoubleNode;
 import Nodes.Node;
 
 import java.util.Iterator;
 
-public class LinkedList<T> implements ListADT<T> {
+public class DoubleLinkedList<T> implements ListADT<T> {
 
     protected int numElements;
-    protected Node<T> first;
-    protected Node<T> last;
+    protected DoubleNode<T> first;
+    protected DoubleNode<T> last;
 
-    public LinkedList() {
+    public DoubleLinkedList() {
         this.numElements = 0;
         this.first = null;
         this.last = null;
@@ -27,11 +28,12 @@ public class LinkedList<T> implements ListADT<T> {
 
         T removedElement = this.first.getElement();
 
-        if (this.numElements == 1) {
-            this.first = null;
+        if (this.size() == 1) {
             this.last = null;
+            this.first = null;
         } else {
             this.first = this.first.getNext();
+            this.first.setPrevious(null);
         }
 
         this.numElements--;
@@ -46,17 +48,11 @@ public class LinkedList<T> implements ListADT<T> {
 
         T removedElement = this.last.getElement();
 
-        if (this.numElements == 1) {
-            this.first = null;
+        if (this.size() == 1) {
             this.last = null;
+            this.first = null;
         } else {
-            Node<T> current = this.first;
-
-            while(current.getNext() != this.last) {
-                current = current.getNext();
-            }
-
-            this.last = current;
+            this.last = this.last.getPrevious();
             this.last.setNext(null);
         }
 
@@ -76,7 +72,7 @@ public class LinkedList<T> implements ListADT<T> {
 
         T removedElement = null;
 
-        if (element.equals(this.first.getElement())) {
+        if(element.equals(this.first.getElement())) {
             removedElement = this.first.getElement();
 
             if(this.size() == 1) {
@@ -84,24 +80,29 @@ public class LinkedList<T> implements ListADT<T> {
                 this.last = null;
             } else {
                 this.first = this.first.getNext();
+                this.first.setPrevious(null);
             }
 
-        } else {
-            Node<T> previous = null;
-            Node<T> current = this.first;
+        } else if(element.equals(this.last.getElement())) {
+            removedElement = this.last.getElement();
+            this.last = this.last.getPrevious();
+            this.last.setNext(null);
 
-            while(current.getNext() != null) {
+        } else {
+            DoubleNode<T> current = this.first;
+
+            while(current.getNext() != this.last) {
                 if(element.equals(current.getElement())) {
                     removedElement = current.getElement();
-                    previous.setNext(current.getNext());
+                    current.getPrevious().setNext(current.getNext());
+                    current.getNext().setPrevious(current.getPrevious());
                 }
 
-                previous = current;
                 current = current.getNext();
             }
         }
 
-        this.numElements--;
+        this.numElements++;
         return removedElement;
     }
 
@@ -125,7 +126,7 @@ public class LinkedList<T> implements ListADT<T> {
 
     @Override
     public boolean contains(T targetElement) {
-        Node<T> current = this.first;
+        DoubleNode<T> current = this.first;
         while(current.getNext() != null) {
             if (current.getElement().equals(targetElement)) {
                 return true;
@@ -149,7 +150,7 @@ public class LinkedList<T> implements ListADT<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new LinkedListIterator<T>(this.first);
+        return new DoubleLinkedListIterator<T>(this.first);
     }
 
 }
