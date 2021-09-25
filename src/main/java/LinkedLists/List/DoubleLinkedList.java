@@ -4,7 +4,6 @@ import Exceptions.ElementNotFoundException;
 import Exceptions.EmptyCollectionException;
 import Iterators.DoubleLinkedListIterator;
 import Nodes.DoubleNode;
-import Nodes.Node;
 
 import java.util.Iterator;
 

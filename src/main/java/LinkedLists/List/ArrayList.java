@@ -2,7 +2,6 @@ package LinkedLists.List;
 
 import Exceptions.ElementNotFoundException;
 import Exceptions.EmptyCollectionException;
-
 import Iterators.ArrayIterator;
 
 import java.util.Iterator;
@@ -34,10 +33,7 @@ public class ArrayList<T> implements ListADT<T> {
             throw new EmptyCollectionException();
         }
 
-        T element = this.elements[this.numElements];
-        this.elements[this.numElements - 1] = null;
-        this.numElements--;
-        return element;
+        return this.remove(this.numElements - 1);
     }
 
     @Override
@@ -46,20 +42,16 @@ public class ArrayList<T> implements ListADT<T> {
             throw new EmptyCollectionException();
         }
 
-        T removedElement = null;
-        boolean found = false;
-
-        for(int index = 0; index < this.numElements && !found; index++) {
-            if(element.equals(this.elements[index])) {
-                removedElement = this.remove(index);
-                found = true;
-            }
-
-            index++;
+        if(!this.contains(element)) {
+            throw new ElementNotFoundException();
         }
 
-        if (!found) {
-            throw new ElementNotFoundException();
+        T removedElement = null;
+
+        for(int index = 0; index < this.numElements; index++) {
+            if(element.equals(this.elements[index])) {
+                removedElement = this.remove(index);
+            }
         }
 
         return removedElement;
@@ -136,13 +128,12 @@ public class ArrayList<T> implements ListADT<T> {
 
     private T remove(int elementIndex) {
         T removedElement = this.elements[elementIndex];
-        this.elements[elementIndex] = null;
 
         for (int index = elementIndex; index < this.numElements - 1; index++) {
             this.elements[index] = this.elements[index + 1];
         }
-
         this.elements[this.numElements - 1] = null;
+
         this.numElements--;
         return removedElement;
     }
