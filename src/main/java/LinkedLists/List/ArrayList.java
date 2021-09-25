@@ -1,10 +1,11 @@
 package LinkedLists.List;
 
-import java.util.Iterator;
-
 import Exceptions.ElementNotFoundException;
 import Exceptions.EmptyCollectionException;
+
 import Iterators.BasicArrayIterator;
+
+import java.util.Iterator;
 
 public class ArrayList<T> implements ListADT<T> {
 

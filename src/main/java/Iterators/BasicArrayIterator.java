@@ -1,6 +1,8 @@
 package Iterators;
 
-public class BasicArrayIterator<T> implements BasicIteratorADT<T> {
+import java.util.Iterator;
+
+public class BasicArrayIterator<T> implements Iterator<T> {
 
     private final T[] elements;
     private int current;
