@@ -1,5 +1,6 @@
 package Lists.UnorderedList;
 
+import Exceptions.ElementNotFoundException;
 import Exceptions.EmptyCollectionException;
 
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestUnorderedArrayList {
 
     private UnorderedArrayList<Integer> getUnorderedArrayList() {
-        return null;
+        UnorderedArrayList<Integer> unorderedArrayList = new UnorderedArrayList<>();
+
+        for(int i=0; i<100; i++) {
+            unorderedArrayList.addToRear(i);
+        }
+
+        return unorderedArrayList;
     }
 
     @Test
@@ -51,5 +58,18 @@ public class TestUnorderedArrayList {
         assertEquals(unorderedArrayList.getLast(), 2);
     }
 
+    @Test
+    @DisplayName("Test if it removes all the occurrences of the element with value of 10")
+    void removeAllTC1() throws EmptyCollectionException, ElementNotFoundException {
+        UnorderedArrayList<Integer> unorderedArrayList = this.getUnorderedArrayList();
+
+        unorderedArrayList.addToFront(10);
+        unorderedArrayList.addToFront(10);
+
+        unorderedArrayList.removeAll(10);
+
+        assertEquals(99, unorderedArrayList.size());
+        assertFalse(unorderedArrayList.contains(10));
+    }
 
 }

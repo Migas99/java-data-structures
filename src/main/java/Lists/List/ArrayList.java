@@ -89,6 +89,7 @@ public class ArrayList<T> implements ListADT<T> {
         for(int index = 0; index < this.numElements; index++) {
             if(element.equals(this.elements[index])) {
                 this.remove(index);
+                index--;
             }
         }
 
