@@ -194,12 +194,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
                 this.first = this.last;
                 this.first.setPrevious(null);
             } else {
+                this.first.setNext(null);
                 this.last = this.first;
-                this.last.setNext(null);
             }
-
-            this.first.setNext(this.last);
-            this.last.setPrevious(this.first);
 
             // We're in the first element
         } else if (this.first.equals(toRemove)) {

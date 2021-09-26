@@ -207,11 +207,9 @@ public class LinkedList<T> implements ListADT<T> {
             if (this.first.equals(toRemove)) {
                 this.first = this.last;
             } else {
+                this.first.setNext(null);
                 this.last = this.first;
-                this.last.setNext(null);
             }
-
-            this.first.setNext(this.last);
 
             // We're in the first element
         } else if (this.first.equals(toRemove)) {
