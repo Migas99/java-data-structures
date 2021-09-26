@@ -1,4 +1,4 @@
-package LinkedLists.List;
+package Lists.List;
 
 import java.util.Iterator;
 
@@ -11,7 +11,11 @@ public interface ListADT<T> extends Iterable<T> {
 
     T removeLast() throws EmptyCollectionException;
 
-    T remove(T element) throws EmptyCollectionException, ElementNotFoundException;
+    T removeFirst(T element) throws EmptyCollectionException, ElementNotFoundException;
+
+    T removeLast(T element) throws EmptyCollectionException, ElementNotFoundException;
+
+    void removeAll(T element) throws EmptyCollectionException, ElementNotFoundException;
 
     T getFirst() throws EmptyCollectionException;
 

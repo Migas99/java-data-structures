@@ -1,4 +1,4 @@
-package LinkedLists.List;
+package Lists.List;
 
 import Exceptions.ElementNotFoundException;
 import Exceptions.EmptyCollectionException;
@@ -37,7 +37,7 @@ public class ArrayList<T> implements ListADT<T> {
     }
 
     @Override
-    public T remove(T element) throws EmptyCollectionException, ElementNotFoundException {
+    public T removeFirst(T element) throws EmptyCollectionException, ElementNotFoundException {
         if (this.isEmpty()) {
             throw new EmptyCollectionException();
         }
@@ -46,15 +46,52 @@ public class ArrayList<T> implements ListADT<T> {
             throw new ElementNotFoundException();
         }
 
-        T removedElement = null;
-
-        for(int index = 0; index < this.numElements; index++) {
+        T toRemove = null;
+        for(int index = 0; index < this.numElements && toRemove == null; index++) {
             if(element.equals(this.elements[index])) {
-                removedElement = this.remove(index);
+                toRemove = this.remove(index);
             }
         }
 
-        return removedElement;
+        return toRemove;
+    }
+
+    @Override
+    public T removeLast(T element) throws EmptyCollectionException, ElementNotFoundException {
+        if (this.isEmpty()) {
+            throw new EmptyCollectionException();
+        }
+
+        if(!this.contains(element)) {
+            throw new ElementNotFoundException();
+        }
+
+        T toRemove = null;
+        for(int index = this.numElements - 1; index >= 0 && toRemove == null; index--) {
+            if(element.equals(this.elements[index])) {
+                toRemove = this.remove(index);
+            }
+        }
+
+        return toRemove;
+    }
+
+    @Override
+    public void removeAll(T element) throws EmptyCollectionException, ElementNotFoundException {
+        if (this.isEmpty()) {
+            throw new EmptyCollectionException();
+        }
+
+        if(!this.contains(element)) {
+            throw new ElementNotFoundException();
+        }
+
+        for(int index = 0; index < this.numElements; index++) {
+            if(element.equals(this.elements[index])) {
+                this.remove(index);
+            }
+        }
+
     }
 
     @Override
@@ -109,7 +146,7 @@ public class ArrayList<T> implements ListADT<T> {
     public String toString() {
         StringBuilder builder = new StringBuilder();
 
-        for (int index = 1; index <= this.size(); index++) {
+        for (int index = 0; index < this.numElements; index++) {
             builder.append("[Position: ").append(index).append(" -> Value: ").append(this.elements[index]).append("]\n");
         }
 

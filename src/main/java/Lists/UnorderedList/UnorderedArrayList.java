@@ -1,9 +1,9 @@
-package LinkedLists.UnorderedList;
+package Lists.UnorderedList;
 
 import Exceptions.ElementNotFoundException;
-import LinkedLists.List.ArrayList;
+import Lists.List.ArrayList;
 
-public class ArrayUnorderedList<T> extends ArrayList<T> implements UnorderedListADT<T> {
+public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedListADT<T> {
 
     @Override
     public void addToFront(T element) {
@@ -11,7 +11,7 @@ public class ArrayUnorderedList<T> extends ArrayList<T> implements UnorderedList
             this.expandCapacity();
         }
 
-        for (int index = this.numElements; index > 0; index++) {
+        for (int index = this.numElements; index > 0; index--) {
             this.elements[index] = this.elements[index - 1];
         }
 

@@ -1,7 +1,7 @@
-package LinkedLists.UnorderedList;
+package Lists.UnorderedList;
 
 import Exceptions.ElementNotFoundException;
-import LinkedLists.List.ListADT;
+import Lists.List.ListADT;
 
 public interface UnorderedListADT<T> extends ListADT<T> {
 

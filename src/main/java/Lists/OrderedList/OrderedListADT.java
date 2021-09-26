@@ -1,6 +1,6 @@
-package LinkedLists.OrderedList;
+package Lists.OrderedList;
 
-import LinkedLists.List.ListADT;
+import Lists.List.ListADT;
 
 public interface OrderedListADT<T> extends ListADT<T> {
 
