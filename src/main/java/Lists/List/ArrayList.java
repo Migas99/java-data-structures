@@ -2,7 +2,7 @@ package Lists.List;
 
 import Exceptions.ElementNotFoundException;
 import Exceptions.EmptyCollectionException;
-import Iterators.ArrayIterator;
+import Iterators.ArrayListIterator;
 
 import java.util.Iterator;
 
@@ -140,7 +140,7 @@ public class ArrayList<T> implements ListADT<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new ArrayIterator<T>(this.elements);
+        return new ArrayListIterator<T>(this.elements);
     }
 
     @Override
