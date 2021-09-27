@@ -3,7 +3,7 @@ package Lists.List;
 import Exceptions.ElementNotFoundException;
 import Exceptions.EmptyCollectionException;
 import Iterators.DoubleLinkedListIterator;
-import Nodes.DoubleNode;
+import Lists.Nodes.DoubleNode;
 
 import java.util.Iterator;
 

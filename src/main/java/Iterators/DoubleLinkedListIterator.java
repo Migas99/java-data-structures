@@ -1,6 +1,6 @@
 package Iterators;
 
-import Nodes.DoubleNode;
+import Lists.Nodes.DoubleNode;
 
 import java.util.Iterator;
 

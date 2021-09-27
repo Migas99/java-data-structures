@@ -1,6 +1,6 @@
 package Iterators;
 
-import Nodes.Node;
+import Lists.Nodes.Node;
 
 import java.util.Iterator;
 

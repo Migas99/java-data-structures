@@ -2,7 +2,7 @@ package Lists.UnorderedList;
 
 import Exceptions.ElementNotFoundException;
 import Lists.List.DoubleLinkedList;
-import Nodes.DoubleNode;
+import Lists.Nodes.DoubleNode;
 
 public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements UnorderedListADT<T> {
 

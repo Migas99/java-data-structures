@@ -1,4 +1,4 @@
-package Nodes;
+package Lists.Nodes;
 
 public class Node<T> {
 
